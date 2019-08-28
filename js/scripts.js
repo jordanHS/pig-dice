@@ -1,74 +1,96 @@
-//be
-
-//PigDice is the game Constructor
-function PigDice(name, diceTotal, scoreTotal, turnTotal) {
-  this.name = name,
-  this.diceTotal = diceTotal,
+//Business logic
+// User constructor
+function User (diceNumber, scoreTotal, turnTotal, userNumber) {
+  this.diceNumber = diceNumber,
   this.scoreTotal = scoreTotal,
-  this.turnTotal = turnTotal
+  this.turnTotal = turnTotal,
+  this.userNumber = userNumber
 }
 
-//user declaration
-var playerOne = new PigDice();
-var playerTwo = new PigDice();
-
-var currentTurn;
-
-PigDice.prototype.diceRoll = function () {
-  Math.floor(Math.random() * 6) + 1;
+User.prototype.isOne = function(diceRoll) {
+  this.diceNumber = diceRoll;
+  if(this.diceNumber === 1) {
+    switchUser();
+    $("input#throw-total").val("0");
+  } else {
+    return this.diceNumber;
+  }
 }
 
-//fe
-$(document).ready(function() {
-  console.log("doc ready fxn?");
-  $("form").submit(function(event) {
-    console.log("in name button fxn?");
-    var name = $("#name").val();
-    console.log("Your name is: ", name);
-    event.preventDefault();
-    });
+User.prototype.calcTurnTotal = function() {
+  if(this.diceNumber === 1) {
+    this.turnTotal = 0
 
-  // Get random dice number
+    //$("input#throw-total").val("");
+  } else if(this.turnTotal += this.diceNumber){
+    $("input#throw-total").val(this.turnTotal);
+  }
+}
+
+User.prototype.sumScore = function() {
+  if(this.scoreTotal === 0) {
+    this.scoreTotal = this.turnTotal;
+  } else {
+    this.scoreTotal += this.turnTotal;
+  }
+
+  console.log('score total: ', this.scoreTotal);
+}
+
+// Check through dice and update turn total, continue the user throw 1 or click hold
+
+// if the user get 1, turn total will be cleared out and turn ends and
+// if the user click hold, turn total will be added to sore total then turn ends
+// every times turn ends turnNumber++
+
+// Todo: When a user sore total becomes more than 100, the user wins.
+
+// Get random dice number
 function throwDice () {
   var diceRoll = Math.floor( Math.random() * 6 ) +1;
-  console.log(diceRoll);
-  User.isOne(); // Need to be updated
+  $("input#dice").val(diceRoll);
+  currentUser.isOne(diceRoll);
+  currentUser.calcTurnTotal();
 }
 
 // User Interface logic
 function clickHold() {
-    $("input#throw-total1").val("");
-    $("input#throw-total2").val("");
-    this.scoreTotal += this.turnTotal;
-    $("input#score1").text(this.scoreTotal);
-    $("input#score2").text(this.scoreTotal);
+  $("input#dice").val("");
+  $("input#throw-total").val("");
+  //currentUser.scoreTotal += currentUser.turnTotal;
+  $("input#score1").val(currentUser.scoreTotal);
+  $("input#score2").val(currentUser.scoreTotal);
+  currentUser.sumScore();
 }
 
-$(document).ready(function(){
+function switchUser() {
+  if (currentUser == user1){
+    currentUser = user2;
+  } else {
+    currentUser = user1;
+  }
+  currentUser.turnTotal = 0;
+  console.log("CurrentUser is ", currentUser.userNumber);
+}
 
-  $("button#hold").on("click", function(event) {
+var user1 = new User(1, 0, 0, 1);
+var user2 = new User(1, 0, 0, 2);
+
+var currentUser = user1;
+
+
+$(document).ready(function(){
+  console.log("CurrentUser is ", currentUser.userNumber);
+  $("button#hold").on("click", function (event){
     event.preventDefault();
     clickHold();
+    switchUser();
   });
-});
-// function attachListeners() {
-//
-// var rollButton =
-//   $("form#roll-button").submit(function(event) {
-//     console.log("in name roll-button fxn?");
-//     var rollButton = parseInt($("#roll-button").val());
-//     console.log("Your roll-button is: ", diceRoll(), rollButton);
-//     event.preventDefault();
-//     });
-// var holdButton =
-//   $("form#holdbutton").submit(function(event) {
-//     console.log("in name hold-button fxn?");
-//     var holdButton = $("#hold-button").val();
-//     console.log("Your hold-button is: ", holdButton);
-//     event.preventDefault();
-//     });
-//   };
-  // var user = playerOne.diceRoll();
-  // console.log("playerOne diceRoll", playerOne, user)
-  // attachListeners();
+
+  $("button#throw").on("click", function(event){
+    event.preventDefault();
+    throwDice();
+  });
+
+
 });
