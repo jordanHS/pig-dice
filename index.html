@@ -8,9 +8,21 @@
     <title>Pig Dice</title>
   </head>
   <body>
-    <h1>Pig Dice!</h1>
-    <label for="name">Name:</label>
-    <input id="name" type="text" name="">
-    <button id="name-button" type="submit" name="button">Submit</button>
+    <div class="container">
+      <div class="well">
+        <h1>Pig Dice!</h1>
+        <form>
+          <label for="name">Name:</label>
+          <input id="name" type="text" name="">
+          <button id="name-button" type="submit" name="button">Submit</button>
+
+          <div id="dice-play">
+            <label for="dice-play">Play</label>
+            <button id="roll-button" class="btn-success btn" type="submit" name="button">Roll</button>
+            <button id="hold-button" class="btn-danger btn" type="submit" name="button">Hold</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
