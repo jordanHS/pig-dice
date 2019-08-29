@@ -1,39 +1,36 @@
+
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
+       <link rel="stylesheet" href="css/styles.css">
+       <img src="images/pig-dice-pic.jpg" alt="a dice">
+       <img id="pigs" src="images/Pass_the_pigs_dice.jpg" alt="pig picture">
+       <script src = "js/jquery-3.4.1.js"></script>
+       <script src = "js/scripts.js"></script>
     <title>Pig Dice</title>
   </head>
   <body>
     <div class="container">
-      <h1>Pig Dice</h1>
-      <form class="form-group" action="index.html" method="post" id="dice-section">
-        <label for="dice">Dice number</label>
-        <input id="dice" type="text">
-        <div class="buttons">
-          <button type="button" name="button" class="btn btn-success" id="throw">Throw</button>
-          <button type="button" name="button" class="btn btn-danger" id="hold">Hold!</button>
-        </div>
-        <label for="throw-total">Turn total:</label>
-        <input id="throw-total" type="text">
-      </form>
-      <!-- reset button?: https://fontawesome.com/v4.7.0/icon/refresh -->
-      <div class="row">
-        <div class="col-md-6 user1">
-
-          <h2>User 1</h2>
-          <label for="score1">Score total:</label>
-          <input type="text" id="score1">
-        </div>
-        <div class="col-md-6 user2">
-          <h2>User 2</h2>
-          <label for="score2">Score total:</label>
-          <input type="text" id="score2">
-        </div>
+      <div class="well">
+        <h1>Pig Dice!</h1>
+        <form>
+          <label for="name">Name:</label>
+          <input id="name" type="text" name="">
+          <button id="name-button" type="submit" name="button">Submit</button>
+<!--
+          <div id="dice-play">
+            <label for="dice-play">Play</label>
+            <button id="roll-button" class="btn-success btn" type="submit" name="button">Roll</button>
+            <button id="hold-button" class="btn-danger btn" type="submit" name="button">Hold</button>
+          </div> -->
+          <label for="dice">Play Game:</label>
+          <!-- <input id="dice" type="text"> -->
+          <div class="buttons">
+            <button type="button" name="button" class="btn btn-success" id="throw">Roll the Dice</button>
+            <button type="button" name="button" class="btn btn-danger" id="hold">Hold!</button>
+          </div>
+        </form>
       </div>
     </div>
   </body>

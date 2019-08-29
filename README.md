@@ -37,36 +37,27 @@ Input: "Done" (option chosen)
 Output: "Stricken LineItem" 'Done'.
 
 
-Behavior
-Input
-Output
-Roll a dice
-1
-2
-3
-4
-5
-6
-1
-2
-3
-4
-5
-6
-Reset roll if a “1” is rolled
-1
-0
+
+
+## Description:
+* Pig Dice
+Write a program where two users can play Pig dice against each other. Don't forget to write plain English specifications with example inputs and outputs before you begin coding!
+
+
+###SPEC:
+####Behavior |: Input:| Output
+- Roll a dice |: Reset roll if a “1” is rolled:|1,0
 Add roll total to score
 Total + current score
 Score total
 Hold
 
 
-
-
-
-
-
+ Each turn, a player repeatedly rolls a dice until either a 1 is rolled
+ OR the player decides to "hold":
+ If the player rolls a 1, they score nothing
+ and it becomes the next player's turn.
+ If the player rolls any other number, it is added to their turn total and the player's turn continues.
 
 
 
