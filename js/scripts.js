@@ -26,4 +26,15 @@ $(document).ready(function() {
     console.log("Your name is: ", name);
     event.preventDefault();
     });
-  });
+
+    $("#roll").on("click", function(event){
+//      $( "#target" ).click(function() {
+        alert( "Handler for #roll.click() called." );
+    });
+    $( "#hold" ).click(function() {
+      $( "#target" ).click();
+        alert( "Handler for #hold.click() called." );
+    });
+      player.diceRoll();
+    });
+//});
