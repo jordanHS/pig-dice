@@ -8,6 +8,10 @@ function PigDice(name){//, score, turnTotal) {
 }
 
 //Prototypes
+//THIS FXN IS THE SAME AS THE PROTOTYPE/BUT SHORTER:
+// function diceRoll(){
+//     return Math.floor(Math.random() * 6) + 1;
+// };
 PigDice.prototype.diceRoll = function () {
   return Math.floor(Math.random() * 6) + 1;
 }
@@ -26,31 +30,29 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     console.log("in name button fxn?");
     playerName1.name = $("#name").val(); //this.player var from above already has a stored name property
-    // if (!playerName1.name===""){ playerName2.name = $("#name").val()};
     console.log("Your name is: ", playerName1, playerName2);
     event.preventDefault();
     });
 
     $("#roll").on("click", function(event){
-//      $( "#target" ).click(function() {
-      //  alert( "Handler for #roll.click() called." );
-
-        let diceRoll = currentTurn.diceRoll();
+      let diceRoll = currentTurn.diceRoll();
 
       currentTurn.turnTotal += diceRoll;
         if(diceRoll===1){
-          currentTurn.turnTotal = 0; //= currentTurn.turnTotal *0;
-          return score;
-        }
+          currentTurn.turnTotal === 0; //a.k.a currentTurn.turnTotal * 0
+      }
       //  currentTurn.score += currentTurn.turnTotal;
         console.log("dice roll#, currentTurn", diceRoll, currentTurn);
 
-        //this.score += current.diceRoll + this.Turn;
       });
 
     $( "#hold" ).click(function() {
       $( "#target" ).click();
         alert( "Handler for #hold.click() called." );
+        let diceRoll = currentTurn.diceRoll();
+
+        currentTurn.score += currentTurn.turnTotal;
+        console.log("dice roll#, currentTurn", diceRoll, currentTurn);
     });
 //  });
 });
