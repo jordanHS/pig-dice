@@ -1,10 +1,10 @@
 //Business logic
 //PigDice is the game Constructor & assigning parameters
-function PigDice(name, score, turnTotal) {
+function PigDice(name){//, score, turnTotal) {
 //property aka parameters; key:value pairs
   this.name = name,
-  this.score = score,
-  this.turnTotal = turnTotal
+  this.score = 0,
+  this.turnTotal = 0
 }
 
 //Prototypes
@@ -14,7 +14,7 @@ PigDice.prototype.diceRoll = function () {
 
 //Constructor Object decleared for new user
 
-var playerName1 = new PigDice("");
+var playerName1 = new PigDice();
 var playerName2 = new PigDice();
 
 var currentTurn;
@@ -28,18 +28,29 @@ $(document).ready(function() {
     playerName1.name = $("#name").val(); //this.player var from above already has a stored name property
     // if (!playerName1.name===""){ playerName2.name = $("#name").val()};
     console.log("Your name is: ", playerName1, playerName2);
-    event.preventDefault();ß
+    event.preventDefault();
     });
 
     $("#roll").on("click", function(event){
 //      $( "#target" ).click(function() {
-        alert( "Handler for #roll.click() called." );
-        currentTurn.diceRoll();
-        console.log("currentTurn", currentTurn.diceRoll());
-    });
+      //  alert( "Handler for #roll.click() called." );
+
+        let diceRoll = currentTurn.diceRoll();
+
+      currentTurn.turnTotal += diceRoll;
+        if(diceRoll===1){
+          currentTurn.turnTotal = 0; //= currentTurn.turnTotal *0;
+          return score;
+        }
+      //  currentTurn.score += currentTurn.turnTotal;
+        console.log("dice roll#, currentTurn", diceRoll, currentTurn);
+
+        //this.score += current.diceRoll + this.Turn;
+      });
+
     $( "#hold" ).click(function() {
       $( "#target" ).click();
         alert( "Handler for #hold.click() called." );
     });
-  });
-//});
+//  });
+});
